@@ -6,6 +6,7 @@ goog.require('lime.Layer');
 goog.require('lime.Label');
 goog.require('lime.RoundedRect');
 goog.require('lime.transitions.Dissolve');
+goog.require('g');
 goog.require('g.Game');
 goog.require('goog.events.KeyCodes');
 goog.require('goog.events.KeyHandler');
@@ -26,8 +27,8 @@ g.Menu = function() {
     this.appendChild(startButton);
 
     goog.events.listenOnce(document,[goog.events.EventType.KEYDOWN],function(e){
-        this.getDirector().replaceScene(new g.Game());
+        g.d.replaceScene(new g.Game(this.getDirector()));
         console.log('done');
-    }, true, this);
+    }, false, this);
 };
 goog.inherits(g.Menu, lime.Scene);
