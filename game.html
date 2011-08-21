@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>ld21 - Escape</title>
+	<script type="text/javascript" src="../closure/closure/goog/base.js"></script>
+	<script type="text/javascript" src="g.js"></script>
+	<style>
+		body {
+			background-color: gray;
+		}
+		#game-container {
+			height: 0;
+			width: 0;
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			margin-top: -300px;
+			margin-left: -400px;
+		}
+		#game {
+			background-color: white;
+			margin-top: -300px;
+			margin: 0 auto;
+			width: 800px;
+			height: 600px;
+		}
+	</style>
+</head>
+
+<body onload="g.start()">
+	<div id="game-container">
+		<div id="game"></div>
+	</div>
+</body>
+
+</html>

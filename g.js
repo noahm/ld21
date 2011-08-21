@@ -1,33 +1,37 @@
 //set main namespace
-goog.provide('ld21');
+goog.provide('g');
 
 
 //get requirements
 goog.require('lime.Director');
 goog.require('lime.Scene');
-goog.require('lime.Layer');
-goog.require('lime.Circle');
-goog.require('lime.Label');
-goog.require('lime.animation.Spawn');
-goog.require('lime.animation.FadeTo');
-goog.require('lime.animation.ScaleTo');
-goog.require('lime.animation.MoveTo');
+goog.require('lime.GlossyButton');
+goog.require('lime.Sprite');
+// goog.require('lime.Circle');
+// goog.require('lime.Label');
+// goog.require('lime.animation.Spawn');
+// goog.require('lime.animation.FadeTo');
+// goog.require('lime.animation.ScaleTo');
+// goog.require('lime.animation.MoveTo');
 
+g.WIDTH = 800;
+g.HEIGHT = 600;
 
 // entrypoint
-ld21.start = function(){
+g.start = function(){
 
-	var director = new lime.Director(document.body),
-	    scene = new lime.Scene(),
-
-	    target = new lime.Layer().setPosition(512,384),
-        circle = new lime.Circle().setSize(150,150).setFill(255,150,0),
-        lbl = new lime.Label().setSize(160,50).setFontSize(30).setText('TOUCH ME!'),
-        title = new lime.Label().setSize(800,70).setFontSize(60).setText('Now move me around!')
-            .setOpacity(0).setPosition(512,80).setFontColor('#999').setFill(200,100,0,.1);
+	var director = new lime.Director(document.getElementById('game'),g.WIDTH,g.HEIGHT),
+	    menuScene = new lime.Scene(),
+        gameScene = new lime.Scene(),
+        background = new lime.Sprite().setSize(800,600).setFill('assets/menubackground.png').setAnchorPoint(0,0),
+        gameTitle = new lime.Label().setFontSize(40).setText('EscapeGame').setPosition(g.WIDTH/2, 75),
+        startButton = new lime.GlossyButton('Start Game').setPosition(g.WIDTH/2, 500).setColor('#ff5d69');
 
 
-    //add circle and label to target object
+    menuScene.appendChild(background);
+    menuScene.appendChild(gameTitle);
+    menuScene.appendChild(startButton);
+    /*/add circle and label to target object
     target.appendChild(circle);
     target.appendChild(lbl);
 
@@ -56,20 +60,20 @@ ld21.start = function(){
             target.runAction(new lime.animation.Spawn(
                 new lime.animation.FadeTo(1),
                 new lime.animation.ScaleTo(1),
-                new lime.animation.MoveTo(512,384)
+                new lime.animation.MoveTo(g.WIDTH/2,g.HEIGHT/2)
             ));
 
             title.runAction(new lime.animation.FadeTo(0));
         });
 
 
-    });
+    });*/
 
 	// set current scene active
-	director.replaceScene(scene);
+	director.replaceScene(menuScene);
 
 }
 
 
 //this is required for outside access after code is compiled in ADVANCED_COMPILATIONS mode
-goog.exportSymbol('ld21.start', ld21.start);
+goog.exportSymbol('g.start', g.start);
