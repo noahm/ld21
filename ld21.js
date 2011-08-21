@@ -17,7 +17,7 @@ goog.require('lime.animation.MoveTo');
 // entrypoint
 ld21.start = function(){
 
-	var director = new lime.Director(document.body,1024,768),
+	var director = new lime.Director(document.body),
 	    scene = new lime.Scene(),
 
 	    target = new lime.Layer().setPosition(512,384),
