@@ -3,7 +3,7 @@ goog.provide('g.Background');
 goog.require('g');
 goog.require('lime.Sprite');
 
-g.SCROLL_SPEED = 1;
+g.SCROLL_SPEED = .6;
 
 g.Background = function() {
 	lime.Sprite.call(this);

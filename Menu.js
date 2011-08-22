@@ -16,7 +16,7 @@ g.Menu = function() {
 	var background = new lime.Sprite().setSize(800,600).setFill('assets/menubackground.png').setAnchorPoint(0,0),
         gameTitle = new lime.Label().setFontSize(40).setText('EscapeGame').setPosition(g.WIDTH/2, 75),
         startButton = new lime.Layer().setPosition(g.WIDTH/2, 500),
-        startText = new lime.Label('Press any key to begin')
+        startText = new lime.Label('Press ENTER to begin')
             .setFontColor('#ffffff').setFontFamily('Impact').setFontSize(34);
     var startRect = new lime.RoundedRect().setRadius(10).setFill('#017fff').setSize(startText.getSize().scale(1.1));
 
@@ -27,8 +27,8 @@ g.Menu = function() {
     this.appendChild(startButton);
 
     goog.events.listenOnce(document,[goog.events.EventType.KEYDOWN],function(e){
-        g.d.replaceScene(new g.Game(this.getDirector()));
-        console.log('done');
+        if (e.KeyCode == goog.events.KeyCodes.RETURN)
+        	g.d.replaceScene(new g.Game(this.getDirector()));
     }, false, this);
 };
 goog.inherits(g.Menu, lime.Scene);
